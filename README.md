@@ -1,2 +1,1 @@
-# sporocilniSistem
-sporocilni sistem
+# Mikrostoritev: sporočilni sistem

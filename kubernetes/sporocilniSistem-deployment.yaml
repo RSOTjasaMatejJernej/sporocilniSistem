@@ -1,17 +1,17 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: sporocilniSistem-deployment
+  name: sporocilni-sistem-deployment
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: sporocilniSistem-profilov
+        app: sporocilni-sistem
     spec:
       containers:
-      - image: tjasaj/sporocilniSistem-profilov:0.01
-        name: sporocilniSistem-profilov
+      - image: tjasaj/sporocilni-sistem:0.01
+        name: sporocilni-sistem
         env:
           - name: KUMULUZEE_DISCOVERY_CLUSTER
             value: bluemix

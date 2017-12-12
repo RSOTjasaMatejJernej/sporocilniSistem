@@ -1,12 +1,12 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: sporocilniSistem-service-monitor
+  name: sporocilni-sistem-service-monitor
   labels:
     team: katalogteam
 spec:
   selector:
     matchLabels:
-      app: sporocilniSistem-profilov
+      app: sporocilni-sistem
   endpoints:
   - port: server

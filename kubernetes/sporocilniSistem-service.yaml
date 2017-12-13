@@ -10,5 +10,6 @@ spec:
   - port: 8081
     protocol: TCP
     targetPort: 8081
+    nodePort: 30133
   selector:
     app: sporocilni-sistem

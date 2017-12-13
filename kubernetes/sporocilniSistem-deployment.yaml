@@ -10,7 +10,7 @@ spec:
         app: sporocilni-sistem
     spec:
       containers:
-      - image: tjasaj/sporocilni-sistem:0.02
+      - image: tjasaj/sporocilni-sistem:0.3
         name: sporocilni-sistem
         env:
           - name: KUMULUZEE_DISCOVERY_CLUSTER

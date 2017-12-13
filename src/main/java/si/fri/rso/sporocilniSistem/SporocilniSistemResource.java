@@ -3,6 +3,9 @@ package si.fri.rso.sporocilniSistem;
 
 import com.kumuluz.ee.common.runtime.EeRuntime;
 import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -30,13 +33,58 @@ public class SporocilniSistemResource {
     }
 
     @GET
+    @Path("info")
+    public Response info() {
+
+        JSONObject json = new JSONObject();
+
+        JSONArray clani = new JSONArray();
+        clani.put("tj9557");
+        clani.put("jj2744");
+        clani.put("mp9119");
+
+        JSONArray mikrostoritve = new JSONArray();
+        mikrostoritve.put("http://169.51.24.248:32112/v1/katalogProfilov/");
+        mikrostoritve.put("http://169.51.24.248:32620/v1/upravljanjeProfilov/1");
+        mikrostoritve.put("http://169.51.24.248:31039/v1/obvestilniSistem/");
+        mikrostoritve.put("http://169.51.24.248:32316/v1/sporocilniSistem/");
+
+        JSONArray github = new JSONArray();
+        github.put("https://github.com/RSOTjasaMatejJernej/katalogProfilov");
+        github.put("https://github.com/RSOTjasaMatejJernej/upravljanjeProfilov");
+        github.put("https://github.com/RSOTjasaMatejJernej/obvestilniSistem");
+        github.put("https://github.com//RSOTjasaMatejJernej/sporocilniSistem");
+
+        JSONArray dockerhub = new JSONArray();
+        dockerhub.put("https://hub.docker.com/r/tjasaj/katalogProfilov");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/upravljanjeProfilov");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/obvestilniSistem");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/sporocilniSistem");
+
+        JSONArray travis = new JSONArray();
+        travis.put("https://travis-ci.org/RSOTjasaMatejJernej/katalogProfilov");
+        travis.put("https://travis-ci.org/RSOTjasaMatejJernej/upravljanjeProfilov");
+        travis.put("https://travis-ci.org/RSOTjasaMatejJernej/obvestilniSistem");
+        travis.put("https://travis-ci.org/RSOTjasaMatejJernej/sporocilniSistem");
+
+        json.put("clani", clani);
+        json.put("opis_projekta", "Nas projekt implementira socialno omrezje.");
+        json.put("mikrostoritve", mikrostoritve);
+        json.put("github", github);
+        json.put("travis", travis);
+        json.put("dockerhub", dockerhub);
+
+        return Response.ok(json.toString()).build();
+    }
+
+    /*@GET
     @Path("{idPrejemnik}")
     public Response getSporocilaPrejemnik(@PathParam("idPrejemnik") String idPrejemnik) {
         Sporocilo sporocilo = Database.getSporociloPrejemnik(idPrejemnik);
         return sporocilo != null
                 ? Response.ok(sporocilo).build()
                 : Response.status(Response.Status.NOT_FOUND).build();
-    }
+    }*/
 
     @POST
     public Response addNewSporocilo(Sporocilo sporocilo) {

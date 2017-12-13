@@ -123,5 +123,6 @@
     <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.2.4" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-jvm:3.2.4" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.microprofile.metrics:microprofile-metrics-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20171018" level="project" />
   </component>
 </module>

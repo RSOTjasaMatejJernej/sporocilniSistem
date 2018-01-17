@@ -21,8 +21,9 @@ public class Database {
 
     public static List<Sporocilo> getPogovor(String idPosiljateljidPrejemnik) {
         List<Sporocilo> sporocilaReturn = new ArrayList<>();
+        String[] split = idPosiljateljidPrejemnik.split("&");
         for (Sporocilo sporocilo : sporocila) {
-            if (sporocilo.getIdPrejemnik().equals(idPosiljateljidPrejemnik))
+            if (sporocilo.getIdPosiljatelj().equals(split[0]) && sporocilo.getIdPrejemnik().equals(split[1]))
                 sporocilaReturn.add(sporocilo);
         }
         return sporocilaReturn;

@@ -32,7 +32,7 @@ public class SporocilniSistemResource {
         return Response.ok(sporocila).build();
     }
 
-    @GET
+    /*@GET
     @Path("info")
     public Response info() {
 
@@ -75,16 +75,16 @@ public class SporocilniSistemResource {
         json.put("dockerhub", dockerhub);
 
         return Response.ok(json.toString()).build();
-    }
+    }*/
 
-    /*@GET
+    @GET
     @Path("{idPrejemnik}")
     public Response getSporocilaPrejemnik(@PathParam("idPrejemnik") String idPrejemnik) {
         Sporocilo sporocilo = Database.getSporociloPrejemnik(idPrejemnik);
         return sporocilo != null
                 ? Response.ok(sporocilo).build()
                 : Response.status(Response.Status.NOT_FOUND).build();
-    }*/
+    }
 
     @POST
     public Response addNewSporocilo(Sporocilo sporocilo) {

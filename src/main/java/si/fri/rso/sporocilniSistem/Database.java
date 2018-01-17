@@ -9,12 +9,12 @@ public class Database {
     private static List<Sporocilo> sporocila = new ArrayList<>();
 
     public static List<Sporocilo> getSporocila() {
-        Sporocilo cus = new Sporocilo();
+        /*Sporocilo cus = new Sporocilo();
         cus.setIdPrejemnik("1");
         cus.setIdPosiljatelj("2");
         cus.setSporocilo("Oj. Kako si kaj? Ali si trenutno na faxu?");
         cus.setDateTime("2017-12-12 12:28:01");
-        sporocila.add(cus);
+        sporocila.add(cus);*/
 
         return sporocila;
     }

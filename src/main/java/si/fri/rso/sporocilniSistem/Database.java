@@ -19,13 +19,13 @@ public class Database {
         return sporocila;
     }
 
-    public static Sporocilo getSporociloPrejemnik(String idPrejemnik) {
+    public static List<Sporocilo> getPogovor(String idPosiljateljidPrejemnik) {
+        List<Sporocilo> sporocilaReturn = new ArrayList<>();
         for (Sporocilo sporocilo : sporocila) {
-            if (sporocilo.getIdPrejemnik().equals(idPrejemnik))
-                return sporocilo;
+            if (sporocilo.getIdPrejemnik().equals(idPosiljateljidPrejemnik))
+                sporocilaReturn.add(sporocilo);
         }
-
-        return null;
+        return sporocilaReturn;
     }
 
     public static Sporocilo getSporociloPosiljatelj(String idPosiljatelj) {

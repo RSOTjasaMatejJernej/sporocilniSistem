@@ -48,7 +48,7 @@ public class SporocilniSistemResource {
         mikrostoritve.put("http://169.51.24.248:32112/v1/katalogProfilov/");
         mikrostoritve.put("http://169.51.24.248:32620/v1/upravljanjeProfilov/1");
         mikrostoritve.put("http://169.51.24.248:31039/v1/obvestilniSistem/");
-        mikrostoritve.put("http://169.51.24.248:32316/v1/sporocilniSistem/");
+        mikrostoritve.put("http://169.51.24.248:30133/v1/sporocilniSistem/");
 
         JSONArray github = new JSONArray();
         github.put("https://github.com/RSOTjasaMatejJernej/katalogProfilov");
@@ -57,10 +57,10 @@ public class SporocilniSistemResource {
         github.put("https://github.com//RSOTjasaMatejJernej/sporocilniSistem");
 
         JSONArray dockerhub = new JSONArray();
-        dockerhub.put("https://hub.docker.com/r/tjasaj/katalogProfilov");
-        dockerhub.put("https://hub.docker.com/r/tjasaj/upravljanjeProfilov");
-        dockerhub.put("https://hub.docker.com/r/tjasaj/obvestilniSistem");
-        dockerhub.put("https://hub.docker.com/r/tjasaj/sporocilniSistem");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/katalog-profilov");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/upravljanje-profilov");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/obvestilni-sistem");
+        dockerhub.put("https://hub.docker.com/r/tjasaj/sporocilni-sistem");
 
         JSONArray travis = new JSONArray();
         travis.put("https://travis-ci.org/RSOTjasaMatejJernej/katalogProfilov");
@@ -76,16 +76,19 @@ public class SporocilniSistemResource {
         json.put("dockerhub", dockerhub);
 
         return Response.ok(json.toString()).build();
+
     }*/
 
-    /*@GET
-    @Path("{idPrejemnik}")
-    public Response getSporocilaPrejemnik(@PathParam("idPrejemnik") String idPrejemnik) {
-        Sporocilo sporocilo = Database.getSporociloPrejemnik(idPrejemnik);
-        return sporocilo != null
-                ? Response.ok(sporocilo).build()
-                : Response.status(Response.Status.NOT_FOUND).build();
-    }*/
+
+    @GET
+    @Path("{idPosiljateljidPrejemnik}")
+    public Response getPogovor(@PathParam("idPosiljateljidPrejemnik") String idPosiljateljidPrejemnik) {
+        List<Sporocilo> sporocila = Database.getPogovor(idPosiljateljidPrejemnik);
+        //return Response.ok(sporocila).build();
+        return sporocila.isEmpty()
+                ? Response.status(Response.Status.NOT_FOUND).build()
+                : Response.ok(sporocila).build();
+    }
 
     @POST
     public Response addNewSporocilo(Sporocilo sporocilo) {

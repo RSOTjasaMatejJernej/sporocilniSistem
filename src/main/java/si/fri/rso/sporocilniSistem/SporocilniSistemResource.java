@@ -81,9 +81,10 @@ public class SporocilniSistemResource {
     @Path("{idPosiljateljidPrejemnik}")
     public Response getPogovor(@PathParam("idPosiljateljidPrejemnik") String idPosiljateljidPrejemnik) {
         List<Sporocilo> sporocila = Database.getPogovor(idPosiljateljidPrejemnik);
-        return sporocila != null
-                ? Response.ok(sporocila).build()
-                : Response.status(Response.Status.NOT_FOUND).build();
+        //return Response.ok(sporocila).build();
+        return sporocila.isEmpty()
+                ? Response.status(Response.Status.NOT_FOUND).build()
+                : Response.ok(sporocila).build();
     }
 
     @POST

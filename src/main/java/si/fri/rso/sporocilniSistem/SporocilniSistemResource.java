@@ -3,8 +3,7 @@ package si.fri.rso.sporocilniSistem;
 
 import com.kumuluz.ee.common.runtime.EeRuntime;
 import org.eclipse.microprofile.metrics.annotation.Metered;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -12,6 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import java.util.logging.Logger;
 import java.util.List;
 
 
@@ -21,6 +21,7 @@ import java.util.List;
 @Path("sporocilniSistem")
 @ApplicationScoped
 public class SporocilniSistemResource {
+    private Logger log = Logger.getLogger(SporocilniSistemResource.class.getName());
 
     @Inject
     private RestProperties restProperties;
@@ -32,7 +33,7 @@ public class SporocilniSistemResource {
         return Response.ok(sporocila).build();
     }
 
-    @GET
+    /*@GET
     @Path("info")
     public Response info() {
 
@@ -75,7 +76,7 @@ public class SporocilniSistemResource {
         json.put("dockerhub", dockerhub);
 
         return Response.ok(json.toString()).build();
-    }
+    }*/
 
     /*@GET
     @Path("{idPrejemnik}")
@@ -101,8 +102,9 @@ public class SporocilniSistemResource {
 
     @POST
     @Path("healthy")
-    public Response setHealth(Boolean healthy) {
-        restProperties.setHealthy(healthy);
+    public Response setHealth(Vrednost healthy) {
+        log.info("setting health to: " + healthy.getVrednost());
+        restProperties.setHealthy(healthy.getVrednost());
         return Response.ok().build();
     }
 
